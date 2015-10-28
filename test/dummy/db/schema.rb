@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730183825) do
+ActiveRecord::Schema.define(version: 20151017225644) do
 
   create_table "autotune_authorizations", force: :cascade do |t|
     t.integer  "user_id"
@@ -61,6 +61,22 @@ ActiveRecord::Schema.define(version: 20150730183825) do
 
   add_index "autotune_blueprints_themes", ["blueprint_id"], name: "index_autotune_blueprints_themes_on_blueprint_id"
   add_index "autotune_blueprints_themes", ["theme_id"], name: "index_autotune_blueprints_themes_on_theme_id"
+
+  create_table "autotune_logs", force: :cascade do |t|
+    t.string   "label"
+    t.text     "content"
+    t.integer  "time"
+    t.integer  "project_id"
+    t.integer  "blueprint_id"
+    t.datetime "created_at"
+    t.boolean  "success",      default: true
+  end
+
+  add_index "autotune_logs", ["blueprint_id"], name: "index_autotune_logs_on_blueprint_id"
+  add_index "autotune_logs", ["created_at"], name: "index_autotune_logs_on_created_at"
+  add_index "autotune_logs", ["label"], name: "index_autotune_logs_on_label"
+  add_index "autotune_logs", ["project_id"], name: "index_autotune_logs_on_project_id"
+  add_index "autotune_logs", ["time"], name: "index_autotune_logs_on_time"
 
   create_table "autotune_projects", force: :cascade do |t|
     t.string   "slug"
