@@ -6,7 +6,7 @@ gem 'unicorn-rails', '~> 2.2.0'
 gem 's3deploy',
     :git => 'https://github.com/ryanmark/s3deploy-ruby.git'
 gem 'autotune',
-    :git => 'https://github.com/voxmedia/autotune.git'
+    :git => 'https://github.com/jumbo/autotune.git'
 
 # Setup foreman
 file 'Procfile', <<-CODE
